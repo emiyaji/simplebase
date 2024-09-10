@@ -1,3 +1,24 @@
+:root{
+/* Define all commonly used colors here */
+--color-body-background: rgb(0 0 0);
+--color-text-body: rgb(255 255 255 / .8);
+--color-text-headings: rgb(255 255 255/ 1);
+--color-links: rgb(255 230 0/ .7);
+--color-links-hover: rgb(255 255 0 / 1);
+}
+
 body {
-    background-color: pink;
+    /* main body background */
+    background-color: var(--color-body-background);
+
+    /* main body text*/
+    color: var(--color-text-headings);
+}
+
+h1, h2, h3 {
+    /*set color of all headings*/
+    color:var(--color-text-headings);
+}
+a {
+    color: var(--color-links)
 }
