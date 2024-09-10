@@ -20,5 +20,11 @@ h1, h2, h3 {
     color:var(--color-text-headings);
 }
 a {
-    color: var(--color-links)
+    /*color of all text links */ 
+    color: var(--color-links);
+    /* nesting example*/ 
+    &:hover {
+    /*set the color of all links during hover*/
+    color: var(--color-links-hover);
+    }
 }
