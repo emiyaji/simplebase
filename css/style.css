@@ -12,6 +12,7 @@
 --font-headings: Georgia, serif;
 
 }
+CSS TABLE OF CONTENTS
 
 /* GLOBAL RESET */
 /* REMOVE DEFAULT 8px MARGIN ON BODY */
@@ -70,4 +71,12 @@ p {
 max-width: 65ch;
 /*new school widow slayer */
 text-wrap: pretty;
+}
+
+/*GLOBAL MEDIA */
+
+img {
+    max-width: 100%;
+    height: auto;
+    /* preserves ratio of pic^^*/
 }
