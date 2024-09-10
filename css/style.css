@@ -5,7 +5,20 @@
 --color-text-headings: rgb(255 255 255/ 1);
 --color-links: rgb(255 230 0/ .7);
 --color-links-hover: rgb(255 255 0 / 1);
+
+
+/*DEFINE ALL FONTS USED HERE*/
+--font-body: Helvetica, Arial, sans-serif;
+--font-headings: Georgia, serif;
+
 }
+
+/* GLOBAL RESET */
+/* REMOVE DEFAULT 8px MARGIN ON BODY */
+
+{*box-sizing: border-box;}
+body { margin: 0;z}
+
 
 body {
     /* main body background */
@@ -27,4 +40,12 @@ a {
     /*set the color of all links during hover*/
     color: var(--color-links-hover);
     }
+}
+/* GLOBAL TYPOGRAPHY */
+body { 
+    font-family: var(--font-body)
+}
+
+h1, h2, h3 {
+    font-family: var(--font-headings);
 }
