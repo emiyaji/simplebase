@@ -1,3 +1,18 @@
+/*CSS TABLE OF CONTENTS
+# GLOBAL STYLES
+    # GLOBAL VARIABES
+    # GLOBAL RESET
+    # GLOBAL COLORS
+    # GLOBAL TYPOGRAPHY
+    # GLOBAL MEDIA
+   
+# LAYOUT
+    # MEDIA QUERIES / BREAKPOINTS
+    # CONTAINER
+    # GRID
+
+
+*/
 :root{
 /* Define all commonly used colors here */
 --color-body-background: rgb(0 0 0);
@@ -6,27 +21,30 @@
 --color-links: rgb(255 230 0/ .7);
 --color-links-hover: rgb(255 255 0 / 1);
 
+/* SIZING UNITS */
+--container-width: 1200px;
+
 
 /*DEFINE ALL FONTS USED HERE*/
 --font-body: Helvetica, Arial, sans-serif;
 --font-headings: Georgia, serif;
 
 }
-CSS TABLE OF CONTENTS
+
 
 /* GLOBAL RESET */
 /* REMOVE DEFAULT 8px MARGIN ON BODY */
 
-{*box-sizing: border-box;}
-body { margin: 0;z}
+* { box-sizing: border-box; }
+body { margin: 0;}
 
 
 body {
     /* main body background */
-    background-color: var(--color-body-background);
+    background-color:var(--color-body-background);
 
     /* main body text*/
-    color: var(--color-text-headings);
+    color:var(--color-text-headings);
 }
 
 h1, h2, h3 {
@@ -79,4 +97,72 @@ img {
     max-width: 100%;
     height: auto;
     /* preserves ratio of pic^^*/
+}
+/*---------------------------------------------------------------------------*/
+/*LAYOUT---------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+/* RESPONSIVE TYPOGRAPHY VIA MEDIA QUERIES */
+
+/* SMALL SCREENS (Mobile < 768px) */
+body {
+    /*set body default to 14px*/
+    font-size: 87.5%;
+}
+
+/* MEDIUM SCREENS (768px < Tablets < 1200px) */
+@media (min-width: 768px) {
+body {
+    /*set body default to 16px*/
+    font-size: 100%;
+}
+}
+
+/* LARGE SCREENS (1200px < laptops, desktops) */
+@media (min-width: 1200px) {
+    body {
+        /*set body default to 18px*/
+        font-size: 112.5%;
+    }
+    }
+
+/* CONTAINER */
+.container {
+    max-width: var(--container-width);
+
+    /*center container horizontally*/
+    margin-left: auto;
+    margin-right: auto;
+}
+/*GRID SYSTEM*/
+
+.row {
+    --gridgap: 2em;
+    /*vertical gaps between horizontal lines*/
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/*GRID will only pop up in large screens bc everything stacks on smaller screens*/
+@media (min-width: 768px) {
+    .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /*repeat(12, 1fr) is same as 1fr x 12)*/
+    gap: var(--gridgap);
+    }
+    .one-half {grid-column: span 6 / span 6; }
+    .one-third {grid-column: span 4 / span 4; }
+    .two-thirds {grid-column: span 8/ pan 8; }
+    .one-fourth {grid-column: span 3 / span 3; }
+    .three-fourths {grid-column: span 9 / span 9; }
+       /*bigger the denominator, longer the line bc counting columns across screen^^*/
+
+}
+
+/* for demo purposes*/ 
+.demo > * {
+    background-color: #444;
+    padding: 1em;
+    text-align: center;
 }
