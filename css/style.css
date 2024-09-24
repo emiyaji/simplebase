@@ -104,6 +104,12 @@ img {
     height: auto;
     /* preserves ratio of pic^^*/
 }
+
+.hide-visually {
+    position:absolute;
+    top: -9999px;
+    left: -9999px
+}
 /*---------------------------------------------------------------------------*/
 /*LAYOUT---------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*/
@@ -205,6 +211,11 @@ body {
 .push-10 { grid-column-start: 11; }
 .push-11 { grid-column-start: 12; }
 
+/* SWAP COLUMNS - WORKS ONLY W 2 CHILDREN */
+.row.swapped > * :first-child{ order: 1; }
+.row.swapped > *:last-child { order: 2; }
+
+
 /*---------------------------------------------------------------------------*/
 /*SITE STRUCTURE---------------------------------------------------------------------*/
 /*---------------------------------------------------------------
@@ -212,14 +223,75 @@ body {
 /*SITE HEADER*/
 .site-header {
     background-color: bisque;
+    /*side by side vv*/
+    display: flex;
+    justify-content: space-between;
+
+    /*spacing around header*/
+    padding: var(--unit-small);
+
+    /* render header on top of hero */
+    position: absolute;
+
+    /*site logo*/
+    .site-logo {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: .1em;
+
+        /*remove margins and resize h1 just in header */
+
+        h1{
+            font-size: 2em;
+            margin: 0;
+            text-wrap: nowrap;
+        }
+
+        a {
+            color: var(--color-links-siteheader);
+            text-decoration: none;
+        }
+    }
+
+    .site-nav {
+
+        ul {
+            margin: 0;
+            list-style: none;
+
+            display: flex;
+            gap: 1em;
+
+            a {
+                display: block;
+                padding: 1em;
+                background-color: pink;
+            }
+        }
+    }
+
+}
+/* SECTIONS */
+section {
+    padding: var(--unit-large) var(--unit-small);
+}
+
+
+/* HERO SECTION */
+
+.hero {
+    background-color: var(--color-hero-background);
+    padding-top: calc(4em + var(--unit-large));
 }
 
 /*SITE MAIN*/
 .site-main {
-    background-color: tomato;
 }
 
 /*SITE FOOTER*/
 .site-footer {
     background-color: aqua;
+/* ADD PADDING AROUND FOOTER */
+    padding: var(--unit-small);
 }
