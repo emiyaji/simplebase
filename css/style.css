@@ -1,297 +1,452 @@
-/*CSS TABLE OF CONTENTS
+/* -----------------------------
+--------------------------------
+--------------------------------
+
+CSS TABLE OF CONTENTS
+
 # GLOBAL STYLES
-    # GLOBAL VARIABES
+    # GLOBAL VARIABLES
     # GLOBAL RESET
     # GLOBAL COLORS
     # GLOBAL TYPOGRAPHY
     # GLOBAL MEDIA
-   
+    # GLOBAL HELPERS
+
 # LAYOUT
-    # MEDIA QUERIES / BREAKPOINTS
+    # MEDIA QUERIES / BREAKPOINTS (RESPONSIVE TYPOGRAPHY)
     # CONTAINER
     # GRID
-    */
 
-/* # SITE STRUCTURE */    
-
-
-
-:root{
-/* Define all commonly used colors here */
---color-body-background: rgb(0 0 0);
---color-text-body: rgb(255 255 255 / .8);
---color-text-headings: rgb(255 255 255/ 1);
---color-links: rgb(255 230 0/ .7);
---color-links-hover: rgb(255 255 0 / 1);
-
-/* SIZING UNITS */
---container-width: 1200px;
---unit-small: 1em;
---unit-medium: 2em;
---unit-large: 4em;
+# SITE STRUCTURE
+    # HEADER
+        # LOGO
+        # SITE NAV
+    # MAIN
+        # SECTIONS
+            # HERO
+    # FOOTER
 
 
-/*DEFINE ALL FONTS USED HERE*/
---font-body: Helvetica, Arial, sans-serif;
---font-headings: Georgia, serif;
+--------------------------------
+--------------------------------
+-------------------------------- */
+
+/* -------------- */
+/* -- GLOBALS -- */
+/* ------------- */
+
+/* GLOBAL VARIABLES */
+
+:root {
+
+    /* DEFINE ALL COMMONLY USED COLORS HERE */
+
+    --color-body-background: rgb(255 255 255);
+    --color-text-body: rgb(0 0 0 / .8);
+    --color-text-headings: rgb(0 0 0 / 1);
+
+    --color-links-dark: rgba(0, 174, 197, 0.7);
+    --color-links-darker: rgb(0, 69, 76);
+    --color-links-light: rgb(173, 247, 255);
+    --color-links-lighter: rgb(228, 252, 255);
+
+
+
+    --color-siteheader-background: transparent;
+    --color-siteheader-links: rgb(255 255 255); 
+
+    --color-hero-background: rgb(100 100 100);
+    --color-hero-text: rgb(255 255 255 / 1);
+    --color-hero-headings: rgb(255 255 255 / 1);
+
+    --color-sitefooter-background: rgb(100 100 100);
+    --color-sitefooter-text: rgb(255 255 255 / 0.8);
+    --color-sitefooter-headings: rgb(255 255 255 / 1);
+    --color-sitefooter-links: rgb(255 255 255);
+
+    /*  DEFINE ALL FONTS USED HERE */
+    --font-body: system-ui, Helvetica, Arial, sans-serif;
+    --font-headings: system-ui, Helvetica, Arial, sans-serif;
+
+    /* SIZING UNITS */
+    --container-width: 1100px;
+    --unit-small: 1em;
+    --unit-medium: 2em;
+    --unit-large: 4em;
+
 
 }
-
 
 /* GLOBAL RESET */
-/* REMOVE DEFAULT 8px MARGIN ON BODY */
 
+/* CHANGE BOX-SIZING FOR ALL TO BORDER-BOX */
 * { box-sizing: border-box; }
-body { margin: 0;}
 
+/* REMOVE THE DEFAULT 8px MARGIN ON THE BODY */
+body { margin: 0; }
+
+/* GLOBAL COLORS */
 
 body {
-    /* main body background */
-    background-color:var(--color-body-background);
 
-    /* main body text*/
-    color:var(--color-text-headings);
+    /* SET THE COLOR OF THE MAIN BODY BACKGROUND */
+    background-color: var(--color-body-background);
+
+    /* SET THE COLOR OF THE MAIN BODY TEXT */
+    color: var(--color-text-body);
+
 }
 
 h1, h2, h3 {
-    /*set color of all headings*/
-    color:var(--color-text-headings);
+     /* SET THE COLOR OF ALL HEADINGS H1-etc */
+    color: var(--color-text-headings);
 }
+
 a {
-    /*color of all text links */ 
+    /* SET THE COLOR OF ALL TEXT LINKS */
     color: var(--color-links);
-    /* nesting example*/ 
+
+    /* SET THE COLOR OF ALL HOVER STATES ON TEXT LINKS */
     &:hover {
-    /*set the color of all links during hover*/
-    color: var(--color-links-hover);
+        color: var(--color-links-hover);
     }
+
 }
+
 /* GLOBAL TYPOGRAPHY */
-body { 
+
+body {
+
+    /* SET THE FONT FOR ALL MAIN BODY TEXT */
     font-family: var(--font-body);
+
+    /* SET THE LEADING (LINE-HEIGHT) FOR ALL BODY TEXT */
     line-height: 1.4;
+
 }
 
 h1, h2, h3 {
+
+    /* SET THE FONT FOR ALL HEADINGS */
     font-family: var(--font-headings);
+
 }
 
 h1 {
+    /* SET H1 FONT SIZE */
     font-size: 3em;
+
+    /* SET H1 LEADING */
     line-height: 1.1;
 }
+
+
 h2 {
+    /* SET H2 FONT SIZE */
     font-size: 2em;
+
+    /* SET H2 LEADING */
     line-height: 1.2;
 }
 
-h3{
+
+h3 {
+    /* SET H3 FONT SIZE */
     font-size: 1.5em;
+
+    /* SET H3 LEADING */
     line-height: 1.3;
 }
 
+
 p {
-/* limit width of all paragraphs (might cause probs for centering later*/
-max-width: 65ch;
-/*new school widow slayer */
-text-wrap: pretty;
+    /* LIMIT THE WIDTH OF ALL PARAGRAPHS */
+    max-width: 65ch;
+
+    /* NEW SCHOOL WIDOW SLAYER */
+    text-wrap: pretty;
+
 }
 
-/*GLOBAL MEDIA */
+/* GLOBAL MEDIA */
 
 img {
+
+    /* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
     max-width: 100%;
-    height: auto;
-    /* preserves ratio of pic^^*/
+    height: auto; 
 }
 
+/* GLOBAL HELPERS */
+
+/* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEACH ENGINES */
 .hide-visually {
-    position:absolute;
+    position: absolute;
     top: -9999px;
-    left: -9999px
+    left: -9999px;
 }
-/*---------------------------------------------------------------------------*/
-/*LAYOUT---------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
+
+
+/* ------------- */
+/* -- LAYOUT -- */
+/* ------------ */
 
 /* RESPONSIVE TYPOGRAPHY VIA MEDIA QUERIES */
 
 /* SMALL SCREENS (Mobile < 768px) */
 body {
-    /*set body default to 14px*/
-    font-size: 87.5%;
+    /* SET THE DEFAULT FONT SIZE TO 14px */
+    font-size: 87.5%; 
 }
 
-/* MEDIUM SCREENS (768px < Tablets < 1200px) */
+/* MEDIUM SCREENS (Tablets < 1200px) */
 @media (min-width: 768px) {
-body {
-    /*set body default to 16px*/
-    font-size: 100%;
-}
+    body {
+        /* SET THE MEDIUM SCREENS AND HIGHER FONT SIZE TO 16px */
+        font-size: 100%; 
+    }
 }
 
-/* LARGE SCREENS (1200px < laptops, desktops) */
+/* LARGE SCREENS (Laptops & Desktops > 1200px) */
 @media (min-width: 1200px) {
     body {
-        /*set body default to 18px*/
-        font-size: 112.5%;
+        /* SET THE LARGE SCREENS AND HIGHER FONT SIZE TO 18px */
+        font-size: 112.5%; 
     }
-    }
+}
 
 /* CONTAINER */
 .container {
+    /* SET THE MAX WIDTH OF YOUR SITE (eg 1200px) */
     max-width: var(--container-width);
 
-    /*center container horizontally*/
+    /* CENTER THE CONTAINER HORIZONTALLY*/
     margin-left: auto;
     margin-right: auto;
 }
-/*GRID SYSTEM*/
 
+/* GRID */
 .row {
-    --gridgap: 2em;
-    /*vertical gaps between horizontal lines*/
-    padding-top: 2em;
-    padding-bottom: 2em;
+    --gridgap: 1em;
 }
 
-/*GRID will only pop up in large screens bc everything stacks on smaller screens*/
+.row > * {
+    margin-bottom: var(--gridgap);
+}
+
 @media (min-width: 768px) {
     .row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    /*repeat(12, 1fr) is same as 1fr x 12)*/
-    gap: var(--gridgap);
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gridgap);
     }
-    .one-half {grid-column: auto / span 6; }
-    .one-third {grid-column: auto / span 4; }
-    .two-thirds {grid-column: auto / pan 8; }
-    .one-fourth {grid-column: auto / span 3; }
-    .three-fourths {grid-column: auto / span 9; }
-       /*bigger the denominator, longer the line bc counting columns across screen^^*/
+
+    /* COMMONLY USED SEMANTIC COLUMN WIDTHS */
+    .one-half { grid-column: auto / span 6; }
+    .one-third { grid-column: auto / span 4; }
+    .two-thirds { grid-column: auto / span 8; }
+    .one-fourth { grid-column: auto / span 3; }
+    .three-fourths { grid-column: auto / span 9; }
+
+    /* 12 COLUMN CLASSES */
+    .col-1 { grid-column: auto / span 1; }
+    .col-2 { grid-column: auto / span 2; }
+    .col-3 { grid-column: auto / span 3; }
+    .col-4 { grid-column: auto / span 4; }
+    .col-5 { grid-column: auto / span 5; }
+    .col-6 { grid-column: auto / span 6; }
+    .col-7 { grid-column: auto / span 7; }
+    .col-8 { grid-column: auto / span 8; }
+    .col-9 { grid-column: auto / span 9; }
+    .col-10 { grid-column: auto / span 10; }
+    .col-11 { grid-column: auto / span 11; }
+    .col-12 { grid-column: auto / span 12; }
+
+    /* COMMONLY CENTERED COLUMNS */
+    .one-half.centered { grid-column: 4 / span 6; }
+    .one-third.centered { grid-column: 5 / span 4; }
+    .two-thirds.centered { grid-column: 3 / span 8; }
+
+    /* PUSHES */
+    .push-1 { grid-column-start: 2; }
+    .push-2 { grid-column-start: 3; }
+    .push-3 { grid-column-start: 4; }
+    .push-4 { grid-column-start: 5; }
+    .push-5 { grid-column-start: 6; }
+    .push-6 { grid-column-start: 7; }
+    .push-7 { grid-column-start: 8; }
+    .push-8 { grid-column-start: 9; }
+    .push-9 { grid-column-start: 10; }
+    .push-10 { grid-column-start: 11; }
+    .push-11 { grid-column-start: 12; }
+
+    /* SWAP (REVERSE) COLUMNS - WORKS ONLY w/ 2 CHILDREN  */
+    .row.swapped > *:first-child { order: 2; }
+    .row.swapped > *:last-child { order: 1; }
 
 }
-/* 12 collomn classes */
-.col-1 { grid-column: auto/ span 1; }
-.col-2 { grid-column: auto/ span 2; }
-.col-3 { grid-column: auto/ span 3; }
-.col-4 { grid-column: auto/ span 4; }
-.col-5 { grid-column: auto/ span 5; }
-.col-6 { grid-column: auto/ span 6; }
-.col-7 { grid-column: auto/ span 7; }
-.col-8 { grid-column: auto/ span 8; }
-.col-9 { grid-column: auto/ span 9; }
-.col-10 { grid-column: auto/ span 10; }
-.col-11 { grid-column: auto/ span 11; }
-.col-12 { grid-column: auto/ span 12; }
 
-
-
-.one-half.centered { grid-column: 4 / span 6; }
-.one-third.centered { grid-column: 5 / span 4; }
-.two-thirds.centered { grid-column: 3 / span 8; }
-
-/* for demo purposes*/ 
+/* FOR DEMO PURPOSES */
 .demo > * {
     background-color: #444;
     padding: 1em;
     text-align: center;
 }
 
-/*Pushes*/
-.push-1 { grid-column-start: 2; }
-.push-2 { grid-column-start: 3; }
-.push-3 { grid-column-start: 4; }
-.push-4 { grid-column-start: 5; }
-.push-5 { grid-column-start: 6; }
-.push-6 { grid-column-start: 7; }
-.push-7 { grid-column-start: 8; }
-.push-8 { grid-column-start: 9; }
-.push-9 { grid-column-start: 10; }
-.push-10 { grid-column-start: 11; }
-.push-11 { grid-column-start: 12; }
 
-/* SWAP COLUMNS - WORKS ONLY W 2 CHILDREN */
-.row.swapped > * :first-child{ order: 1; }
-.row.swapped > *:last-child { order: 2; }
+/* -------------------- */
+/* -- SITE STRUCTURE -- */
+/* -------------------- */
 
-
-/*---------------------------------------------------------------------------*/
-/*SITE STRUCTURE---------------------------------------------------------------------*/
-/*---------------------------------------------------------------
-
-/*SITE HEADER*/
+/* SITE HEADER */
 .site-header {
-    background-color: bisque;
-    /*side by side vv*/
+    background-color: var(--color-siteheader-background);
+    
+    /* PUT ALL HEADER CHILDREN SIDE-BY-SIDE AND VERT CENTERED */
+    @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    }
 
-    /*spacing around header*/
+    /* ADD SOME GENERAL SPACING AROUND THE HEADER */
     padding: var(--unit-small);
 
-    /* render header on top of hero */
+    /* RENDER HEADER ON TOP OF HERO ON LARGE SCREENS */
+    @media (min-width: 768px) {
     position: absolute;
+    width: 100%;
+    }
 
-    /*site logo*/
+
+    /* REMOVE LINK UNDERLINES AND SET SITE HEADER LINK COLOR */
+    a {
+        color: var(--color-siteheader-links);
+        text-decoration: none;
+    }
+
+    /* SITE LOGO */
     .site-logo {
-        display: grid;
-        grid-template-columns: auto auto;
+
+        /* PUT SITE LOGO CHILDREN SIDE-BY-SIDE AND CENTER */
+        display: flex;
         align-items: center;
-        gap: .1em;
+        gap: 1em;
 
-        /*remove margins and resize h1 just in header */
-
-        h1{
+        /* REMOVE MARGINS AND RESIZE H1 INSIDE HEADER */
+        h1 {
             font-size: 2em;
             margin: 0;
             text-wrap: nowrap;
         }
-
-        a {
-            color: var(--color-links-siteheader);
-            text-decoration: none;
-        }
     }
 
+    /* SITE-NAV */
     .site-nav {
 
         ul {
+            /* REMOVE MARGINS & BULLETS FROM LIST */
             margin: 0;
+            padding: 0;
             list-style: none;
 
+            /* DISPLAY CHILDREN SIDE-BY-SIDE ON LARGE SCREEN */
+            @media (min-width: 768px) {
             display: flex;
-            gap: 1em;
-
-            a {
-                display: block;
-                padding: 1em;
-                background-color: pink;
             }
         }
+
+        /* MAKE SITE NAV LINKS BIG LIKE BUTTONS */
+        a {
+            display: block;
+            padding: 1em;
+        }
+
     }
 
+
 }
+
+/* FOR SMALL SCREENS STACK THE NAV ITEMS */
+@media (max-width: 767px) {
+    ul {
+        display: block;
+    }
+}
+/* SITE MAIN */
+.site-main {
+}
+
 /* SECTIONS */
 section {
     padding: var(--unit-large) var(--unit-small);
 }
 
-
 /* HERO SECTION */
 
 .hero {
     background-color: var(--color-hero-background);
+
+    /* ADD MORE SPACE ON TOP FOR THE ABSOLUTE HEADER */
     padding-top: calc(4em + var(--unit-large));
 }
 
-/*SITE MAIN*/
-.site-main {
+/* SITE FOOTER */
+.site-footer {
+    background-color: var(--color-sitefooter-background);
+
+    /* ADD SOME GENERAL PADDING AROUND THE FOOTER */
+    padding: var(--unit-small);
+
+    h1, h2, h3 {
+        color: var(--color-sitefooter-headings);
+    }
+
+    a {
+
+    }
 }
 
-/*SITE FOOTER*/
-.site-footer {
-    background-color: aqua;
-/* ADD PADDING AROUND FOOTER */
+    .site-nav {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+    }
+}
+
+/* -------------------------- */
+/* ------ UI COMPONENTS ---------- */
+/* --------------------------- */
+
+/* BUTTONS */
+
+.button {
+    border: 1px solid var(--color-links-dark);
+    background-color: var(--color-links-dark);
+    display: inline-block;
     padding: var(--unit-small);
+    color: white;
+    text-decoration: none;
+
+    + .button {
+        margin-left: var(--unit-small);
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: var(--color-links-darker);
+        border-color: var(--color-links-darker);
+    }
+
+    &:light {
+        border-color: var(--color-links-light);
+        background-color: var(--color-links-light);
+        color: var(--color-links-darker);
+
+        &:hover {
+            border-color: var(--color-links-lighter);
+            background-color: var(--color-links-lighter);
+        }
+    }
 }
