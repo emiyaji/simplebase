@@ -1,6 +1,5 @@
-/* -----------------------------
---------------------------------
---------------------------------
+/* ----------------------
+-------------------------
 
 CSS TABLE OF CONTENTS
 
@@ -21,19 +20,28 @@ CSS TABLE OF CONTENTS
     # HEADER
         # LOGO
         # SITE NAV
+            # TOGGLE MENU
+                # NAVICON / HAMBURGER
+        # SITE-HEADER-ON-TOP-OF-HERO
     # MAIN
         # SECTIONS
             # HERO
     # FOOTER
 
+# UI COMPONENTS
+    # BUTTONS
 
---------------------------------
---------------------------------
--------------------------------- */
+# ANIMATION
+    # SMOOTH SCROLLING
 
-/* -------------- */
-/* -- GLOBALS -- */
-/* ------------- */
+# CUSTOM STYLING
+
+-------------------------
+---------------------- */
+
+/* -------------------- */
+/* --  GLOBAL STYLES -- */
+/* -------------------- */
 
 /* GLOBAL VARIABLES */
 
@@ -41,39 +49,44 @@ CSS TABLE OF CONTENTS
 
     /* DEFINE ALL COMMONLY USED COLORS HERE */
 
-    --color-body-background: rgb(255 255 255);
+    /* LIGHT MODE */
+    --color-body-bg: rgb(255 255 255 /1);
     --color-text-body: rgb(0 0 0 / .8);
-    --color-text-headings: rgb(0 0 0 / 1);
+    --color-text-headings: rgb(0 0 0 /1);
 
-    --color-links-dark: rgba(0, 174, 197, 0.7);
-    --color-links-darker: rgb(0, 69, 76);
-    --color-links-light: rgb(173, 247, 255);
-    --color-links-lighter: rgb(228, 252, 255);
+    /* DARK MODE */
+    /* --color-body-bg: rgb(0 0 0 /1);
+    --color-text-body: rgb(255 255 255 / .8);
+    --color-text-headings: rgb(255 255 255 /1); */
 
-
-
-    --color-siteheader-background: transparent;
-    --color-siteheader-links: rgb(255 255 255); 
-
-    --color-hero-background: rgb(100 100 100);
-    --color-hero-text: rgb(255 255 255 / 1);
-    --color-hero-headings: rgb(255 255 255 / 1);
-
-    --color-sitefooter-background: rgb(100 100 100);
-    --color-sitefooter-text: rgb(255 255 255 / 0.8);
-    --color-sitefooter-headings: rgb(255 255 255 / 1);
-    --color-sitefooter-links: rgb(255 255 255);
+    --color-a: blue;
+    --color-a-hover: darkblue;
+    --color-a-dark: blue;
+    --color-a-darker: darkblue;
+    --color-a-light: lightblue;
+    --color-a-lighter: rgb(255 255 255 / 1);
+    
+    --color-siteheader-bg: transparent;
+    --color-siteheader-a: var(--color-text-headings);
+    
+    --color-hero-bg: rgb(100 100 100 /1);
+    --color-hero-headings: rgb(255 255 255 /1);
+    --color-hero-text: rgb(255 255 255 /.8);
+    
+    --color-sitefooter-bg: rgb(100 100 100 /1);
+    --color-sitefooter-text: rgb(255 255 255 /.8);
+    --color-sitefooter-headings: rgb(255 255 255 /1);
+    --color-sitefooter-a: rgb(255 255 255 /1);
 
     /*  DEFINE ALL FONTS USED HERE */
     --font-body: system-ui, Helvetica, Arial, sans-serif;
-    --font-headings: system-ui, Helvetica, Arial, sans-serif;
+    --font-heading: system-ui, Helvetica, Arial, sans-serif;
 
     /* SIZING UNITS */
     --container-width: 1100px;
     --unit-small: 1em;
     --unit-medium: 2em;
     --unit-large: 4em;
-
 
 }
 
@@ -85,36 +98,34 @@ CSS TABLE OF CONTENTS
 /* REMOVE THE DEFAULT 8px MARGIN ON THE BODY */
 body { margin: 0; }
 
-/* GLOBAL COLORS */
 
+/* GLOBAL COLORS */
 body {
 
     /* SET THE COLOR OF THE MAIN BODY BACKGROUND */
-    background-color: var(--color-body-background);
+    background-color: var(--color-body-bg);
 
     /* SET THE COLOR OF THE MAIN BODY TEXT */
     color: var(--color-text-body);
-
 }
 
 h1, h2, h3 {
-     /* SET THE COLOR OF ALL HEADINGS H1-etc */
+
+    /* SET THE COLOR OF ALL HEADINGS H1-etc */
     color: var(--color-text-headings);
 }
 
 a {
     /* SET THE COLOR OF ALL TEXT LINKS */
-    color: var(--color-links);
+    color: var(--color-a);
 
     /* SET THE COLOR OF ALL HOVER STATES ON TEXT LINKS */
     &:hover {
-        color: var(--color-links-hover);
+        color: var(--color-a-hover);
     }
-
 }
 
 /* GLOBAL TYPOGRAPHY */
-
 body {
 
     /* SET THE FONT FOR ALL MAIN BODY TEXT */
@@ -122,39 +133,29 @@ body {
 
     /* SET THE LEADING (LINE-HEIGHT) FOR ALL BODY TEXT */
     line-height: 1.4;
-
 }
 
+/* SET THE FONT & MARGIN FOR ALL HEADINGS */
 h1, h2, h3 {
-
-    /* SET THE FONT FOR ALL HEADINGS */
-    font-family: var(--font-headings);
-
+    font-family: var(--font-heading);
+    margin: .4em 0;
 }
 
+/* SET H1 FONT SIZE & LEADING */
 h1 {
-    /* SET H1 FONT SIZE */
     font-size: 3em;
-
-    /* SET H1 LEADING */
     line-height: 1.1;
 }
 
-
+/* SET H2 FONT SIZE & LEADING */
 h2 {
-    /* SET H2 FONT SIZE */
     font-size: 2em;
-
-    /* SET H2 LEADING */
     line-height: 1.2;
 }
 
-
+/* SET H3 FONT SIZE & LEADING */
 h3 {
-    /* SET H3 FONT SIZE */
     font-size: 1.5em;
-
-    /* SET H3 LEADING */
     line-height: 1.3;
 }
 
@@ -170,47 +171,55 @@ p {
 
 /* GLOBAL MEDIA */
 
+/* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
 img {
-
-    /* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
     max-width: 100%;
     height: auto; 
 }
 
 /* GLOBAL HELPERS */
 
-/* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEACH ENGINES */
+/* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEARCH ENGINES */
 .hide-visually {
     position: absolute;
     top: -9999px;
     left: -9999px;
 }
 
+@media (max-width: 767px) {
+    .hide-visually-smallonly {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+}
 
-/* ------------- */
-/* -- LAYOUT -- */
-/* ------------ */
+
+/* ------------------- */
+/* -----  LAYOUT ----- */
+/* ------------------- */
 
 /* RESPONSIVE TYPOGRAPHY VIA MEDIA QUERIES */
 
-/* SMALL SCREENS (Mobile < 768px) */
+/* SMALL SCREENS (Mobile , 767px) */
 body {
-    /* SET THE DEFAULT FONT SIZE TO 14px */
+    /* Set the default font size */
     font-size: 87.5%; 
 }
 
-/* MEDIUM SCREENS (Tablets < 1200px) */
+/* MEDIUM SCREENS ( Tablets < 1200px ) */
 @media (min-width: 768px) {
     body {
-        /* SET THE MEDIUM SCREENS AND HIGHER FONT SIZE TO 16px */
+        /* Set the medium screens and highr font size to 16px */
         font-size: 100%; 
     }
 }
 
-/* LARGE SCREENS (Laptops & Desktops > 1200px) */
+/* LARGE SCREENS ( Laptops & Desktop > 1200px ) */
+
 @media (min-width: 1200px) {
     body {
-        /* SET THE LARGE SCREENS AND HIGHER FONT SIZE TO 18px */
+        /* Set the medium screens and highr font size to 16px */
         font-size: 112.5%; 
     }
 }
@@ -227,47 +236,54 @@ body {
 
 /* GRID */
 .row {
-    --gridgap: 1em;
+    --gridgap: 2em;
 }
 
+/* - All the children under row */
 .row > * {
+
+    /* - Setting bttom margin for each fraction */
+    margin-top: var(--gridgap);
     margin-bottom: var(--gridgap);
 }
 
 @media (min-width: 768px) {
+
     .row {
+        /* - Create grid in 12 columns, with equal fractions */
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: var(--gridgap);
     }
 
-    /* COMMONLY USED SEMANTIC COLUMN WIDTHS */
+    /* COMMONLY USED SEMANTIC COLUMN WIDTHS
+       - Setting size for each grid */
     .one-half { grid-column: auto / span 6; }
     .one-third { grid-column: auto / span 4; }
     .two-thirds { grid-column: auto / span 8; }
     .one-fourth { grid-column: auto / span 3; }
     .three-fourths { grid-column: auto / span 9; }
 
-    /* 12 COLUMN CLASSES */
-    .col-1 { grid-column: auto / span 1; }
-    .col-2 { grid-column: auto / span 2; }
-    .col-3 { grid-column: auto / span 3; }
-    .col-4 { grid-column: auto / span 4; }
-    .col-5 { grid-column: auto / span 5; }
-    .col-6 { grid-column: auto / span 6; }
-    .col-7 { grid-column: auto / span 7; }
-    .col-8 { grid-column: auto / span 8; }
-    .col-9 { grid-column: auto / span 9; }
-    .col-10 { grid-column: auto / span 10; }
-    .col-11 { grid-column: auto / span 11; }
-    .col-12 { grid-column: auto / span 12; }
+    /* - 12 Column Classes */
+    .col-1 {grid-column: auto / span 1; }
+    .col-2 {grid-column: auto / span 2; }
+    .col-3 {grid-column: auto / span 3; }
+    .col-4 {grid-column: auto / span 4; }
+    .col-5 {grid-column: auto / span 5; }
+    .col-6 {grid-column: auto / span 6; }
+    .col-7 {grid-column: auto / span 7; }
+    .col-8 {grid-column: auto / span 8; }
+    .col-9 {grid-column: auto / span 9; }
+    .col-10 {grid-column: auto / span 10; }
+    .col-11 {grid-column: auto / span 11; }
+    .col-12 {grid-column: auto / span 12; }
 
-    /* COMMONLY CENTERED COLUMNS */
-    .one-half.centered { grid-column: 4 / span 6; }
-    .one-third.centered { grid-column: 5 / span 4; }
-    .two-thirds.centered { grid-column: 3 / span 8; }
+    /*  - Centered columns */
+    .one-half.centered {grid-column: 4 / span 6; }
+    .one-third.centered {grid-column: 5 / span 4; } 
+    .two-thirds.centered {grid-column: 3 / span 8; } 
 
-    /* PUSHES */
+    /* - Pushes */
     .push-1 { grid-column-start: 2; }
     .push-2 { grid-column-start: 3; }
     .push-3 { grid-column-start: 4; }
@@ -289,48 +305,40 @@ body {
 /* FOR DEMO PURPOSES */
 .demo > * {
     background-color: #444;
-    padding: 1em;
+    padding: 1em;;
     text-align: center;
 }
 
-
-/* -------------------- */
-/* -- SITE STRUCTURE -- */
-/* -------------------- */
+/* ------------------- */
+/* -  SITE STRUCTURE - */
+/* ------------------- */
 
 /* SITE HEADER */
 .site-header {
-    background-color: var(--color-siteheader-background);
+    background-color: var(--color-siteheader-bg);
     
     /* PUT ALL HEADER CHILDREN SIDE-BY-SIDE AND VERT CENTERED */
     @media (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     /* ADD SOME GENERAL SPACING AROUND THE HEADER */
     padding: var(--unit-small);
 
-    /* RENDER HEADER ON TOP OF HERO ON LARGE SCREENS */
-    @media (min-width: 768px) {
-    position: absolute;
-    width: 100%;
-    }
-
-
-    /* REMOVE LINK UNDERLINES AND SET SITE HEADER LINK COLOR */
+   /* REMOVE LINK UNDERLINES */
     a {
-        color: var(--color-siteheader-links);
         text-decoration: none;
     }
-
+    
     /* SITE LOGO */
     .site-logo {
 
         /* PUT SITE LOGO CHILDREN SIDE-BY-SIDE AND CENTER */
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 1em;
 
         /* REMOVE MARGINS AND RESIZE H1 INSIDE HEADER */
@@ -339,21 +347,26 @@ body {
             margin: 0;
             text-wrap: nowrap;
         }
+
+        /* REMOVE THE SPACE UDER THE LOGO MARK */
+        img, svg {
+            display: block;
+        }
+
     }
 
-    /* SITE-NAV */
-    .site-nav {
+    /* SITE-HEADER-NAV */
+    .site-header-nav {
 
         ul {
             /* REMOVE MARGINS & BULLETS FROM LIST */
             margin: 0;
             padding: 0;
             list-style: none;
-
-            /* DISPLAY CHILDREN SIDE-BY-SIDE ON LARGE SCREEN */
-            @media (min-width: 768px) {
             display: flex;
-            }
+            justify-content: center;
+            flex-wrap: wrap;
+        
         }
 
         /* MAKE SITE NAV LINKS BIG LIKE BUTTONS */
@@ -364,17 +377,178 @@ body {
 
     }
 
-
 }
 
-/* FOR SMALL SCREENS STACK THE NAV ITEMS */
-@media (max-width: 767px) {
-    ul {
+/* TOGGLE MENU */
+
+/*HIDE MENU BUTTON IF NOT USING TOGGLE MENU  */
+.site-menu-button {
+    display: none;
+}
+
+.toggle-menu {
+
+    --color-togglemenu-bg: black;
+    --color-togglemenu-text: white;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    /* SHOW MENU BUTTON IF USING TOGGLE NAV */
+    .site-menu-button {
         display: block;
+        background-color: transparent;
+        border: 1px solid var(--color-siteheader-a);
+        color: var(--color-siteheader-a);
+        padding: .5em;
+        position: relative;
+        z-index: 100;
+        transition: .4s all ease-out;
+
+        /* RESET THE FONT SIZE */
+        font-size: inherit;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        /* ADD SUPPORT FOR NAVICON/HAMBURGER ICON */
+        &:has(svg) {
+
+            /* VERTICALLY ALIGN THE MENU TEXT W ICON */
+            display: flex;
+            align-content: center;
+            gap: var(--unit-small);
+
+            /* REMOVE BORDER */
+            border: none;
+            
+            /* SET TSVG COLOR */
+            svg {
+                fill: var(--color-siteheader-a);
+            }
+
+            /* ADD SUPPORT FOR SVG ANIMATION (">" MEANS "IMEDIATE CHILD") */
+            svg > * {
+                transition: .2s all ease-out;
+                transform-origin: center;
+            }
+
+        }
+    }
+
+    .site-menu {
+        /* SET COLOR TO TOGGLE MENU */
+        background-color: var(--color-togglemenu-bg);
+        color: var(--color-togglemenu-text);
+
+        position: fixed;
+        top: 0;
+        right: 0; 
+        z-index: 50;
+        width: 100%;
+        min-height: 100svh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3vw;
+        transition: .4s all ease-out;
+
+        a {
+            color: var(--color-togglemenu-text);
+            padding: 2vh 2vw;
+        }
+
+    }
+
+    &[data-menustate="open"] {
+
+        /* CHANGE COLOR TO TOGGLE MENU COLORS */
+        --color-siteheader-a: var(--color-togglemenu-text);
+
+        /* SET MENU BUTTON TO FIXED WHEN MENU IS OPEN */
+        .site-menu-button {
+            position: fixed;
+            z-index: 100;
+        }
+
+        /* SHOW THE SITE MENU WHEN OPEN */
+        .site-menu {
+            transform: translateX(0);
+        }
+
+        /* ANIMATE THE NAVICON / HAMBURGER TO AN X */
+        .site-menu-button svg {
+
+            .simple-navicon-top {
+                /* transform: rotate(45deg); */
+                rotate: 45deg;
+                translate: -21% 25%;
+            }
+
+            .simple-navicon-middle {
+                opacity: 0;
+            }
+
+            .simple-navicon-bottom {
+                rotate: -45deg;
+                translate: -21% -25%;
+            }
+
+        }
+
+    }
+
+    &[data-menustate="closed"] {
+
+        /* MOVE THE SIDE MENU TO THE RIGHT WHEN CLOSED */
+        .site-menu {
+            transform: translateX(100%);
+        }
+    }
+
+    /* IF TOGGLE MENU DISPLAY LOGO LEFT AND MENU RIGHT ON ALL SCREENS */
+    .site-header:has(.toggle-menu) {
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* PLACE SITE LOGO ON TOP OF DRAWER MENU */
+    .site-logo {
+    /* NOTE: LOGO WILL SCROLL AWAY - NEED TO ADD SUPPORT FOR FIXED */
+    /* position: relative; */
+    z-index: 100;
     }
 }
+
+/* PLACE SITE HEADER ON TOP OF HERO ON LARGE SCREENS */
+.site-header.on-top-of-hero {
+
+    /* RENDER HEADER ON TOP OF HERO */
+    position: absolute;
+    width: 100%;
+
+    /* SET SITE HEADER LINK COLOR ON LARGE SCREENS */
+
+    --color-siteheader-a: var(--color-hero-headings);
+    a {
+        color: var(--color-siteheader-a);
+    }
+
+    /* ADD MORE SPAGE ON TOP FOR THE ABSOLUTE HEADER */
+    & + .site-main > .hero {
+        padding-top: calc(4em + var(--unit-large));
+    }
+
+}
+
+
+
 /* SITE MAIN */
 .site-main {
+
 }
 
 /* SECTIONS */
@@ -383,17 +557,28 @@ section {
 }
 
 /* HERO SECTION */
-
 .hero {
-    background-color: var(--color-hero-background);
+    background-color: var(--color-hero-bg);
+    color: var(--color-hero-text);
 
     /* ADD MORE SPACE ON TOP FOR THE ABSOLUTE HEADER */
     padding-top: calc(4em + var(--unit-large));
+
+    h1 {
+        font-size: 4em;
+        line-height: 1;
+        text-wrap: balance;
+    }
+
+    h1, h2, h3 {
+        color: var(--color-hero-headings);
+    }
 }
 
 /* SITE FOOTER */
 .site-footer {
-    background-color: var(--color-sitefooter-background);
+    background-color: var(--color-sitefooter-bg);
+    color: var(--color-sitefooter-text);
 
     /* ADD SOME GENERAL PADDING AROUND THE FOOTER */
     padding: var(--unit-small);
@@ -402,31 +587,38 @@ section {
         color: var(--color-sitefooter-headings);
     }
 
-    a {
-
+    a{
+        color: var(--color-sitefooter-a);
     }
-}
 
-    .site-nav {
+
+    .site-footer-nav {
         ul {
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding:0;
+        }
     }
+
 }
 
-/* -------------------------- */
-/* ------ UI COMPONENTS ---------- */
-/* --------------------------- */
+/* -------------------- */
+/* --  UI COMPONENTS -- */
+/* -------------------- */
 
 /* BUTTONS */
-
 .button {
-    border: 1px solid var(--color-links-dark);
-    background-color: var(--color-links-dark);
+    /* SET THE BUTTON COLORS */
+    border: 1px solid var(--color-a-dark);
+    background-color: var(--color-a-dark);
+    color: white;
+
+    /* ENABLE BOX MODEL STYLING */
     display: inline-block;
     padding: var(--unit-small);
-    color: white;
+    margin: var(--unit-small) 0;
+
+    /* GET RID OF THE UNDERLINE */
     text-decoration: none;
 
     + .button {
@@ -435,18 +627,31 @@ section {
 
     &:hover {
         color: #fff;
-        background-color: var(--color-links-darker);
-        border-color: var(--color-links-darker);
+        background-color: var(--color-a-darker);
+        border-color: var(--color-a-darker);
+
     }
 
-    &:light {
-        border-color: var(--color-links-light);
-        background-color: var(--color-links-light);
-        color: var(--color-links-darker);
+    /* LIGHT BUTTON VARIANT */
+    &.light {
+        border-color: var(--color-a-light);
+        background-color: var(--color-a-light);
+        color: var(--color-a-darker);
 
         &:hover {
-            border-color: var(--color-links-lighter);
-            background-color: var(--color-links-lighter);
+            border-color: var(--color-a-lighter);
+            background-color: var(--color-a-lighter);
         }
     }
+
+}
+
+
+/* -------------------- */
+/* --    ANIMATION   -- */
+/* -------------------- */
+
+/* ADD SUPPORT FOR SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
 }
